@@ -24,6 +24,7 @@ dependencies {
     // Use Scala 2.13 in our library project
     implementation 'org.scala-lang:scala-library:2.13.11'
     implementation "org.scala-lang:scala-compiler:2.13.11"
+    implementation 'com.storm-enroute:scalameter-core_2.13:0.21'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:32.1.1-jre'
