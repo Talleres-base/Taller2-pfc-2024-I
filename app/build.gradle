@@ -47,7 +47,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'funcional.template.App'
+    mainClass = 'taller2.App'
 }
 
 task repl(type:JavaExec) {
