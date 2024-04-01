@@ -24,7 +24,7 @@ class InsertionSort {
       * @param comp comparador de elementos tipo T
       * @ una función que recibe una lista de elementos tipo T y devuelve una tupla con la lista ordenada y el número de comparaciones realizada
       */
-  def InsertionSort[T](comp:Comparador[T]): AlgoritmoOrd[T] = {
+  def sort[T](comp:Comparador[T]): AlgoritmoOrd[T] = {
      (L:List[T]) => (List(),0)
   }
 

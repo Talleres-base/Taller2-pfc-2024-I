@@ -17,7 +17,7 @@ class QuickSort {
      (List(),List(),0)
   }
 
-  def QuickSort[T](comp:Comparador[T]): AlgoritmoOrd[T] = {
+  def sort[T](comp:Comparador[T]): AlgoritmoOrd[T] = {
      (L:List[T]) => (List(),0)
   }
 }

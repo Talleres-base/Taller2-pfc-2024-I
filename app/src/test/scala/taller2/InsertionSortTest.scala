@@ -12,26 +12,56 @@ import scala.util.Random
 class InsertionSortTest extends AnyFunSuite {
   val objInsertionSort = new InsertionSort()
   
-  test("Caso 1 Enteros función insert listas tamaño 100") {
-    val cmp = (a: Int, b: Int) => a < b
-    val lst = (1 to 100).map(_ => Random.nextInt(10000)).toList.sortWith(cmp)
-    val x = Random.nextInt(10000)
-    assert(objInsertionSort.insert(x, lst,  cmp)._0 === (x :: lst).sortWith((cmp)))
+  test("Caso 1 Enteros comprobar ordenamiento listas tamaño 100") {
+    val cmp = (a:Int, b:Int) => a < b
+    val lst = (1 to 100).map(_ => Random.nextInt(10000)).toList
+    assert(objInsertionSort.sort[Int](cmp)(lst)._1 === lst.sortWith(cmp))
   }
 
-  test("Caso 2 Enteros función insert listas tamaño 500") {
+  test("Caso 2 Enteros comprobar ordenamiento listas tamaño 500") {
     
-    val cmp = (a: Int, b: Int) => a < b
-    val lst = (1 to 500).map(_ => Random.nextInt(10000)).toList.sortWith(cmp)
-    val x = Random.nextInt(10000)
-    assert(objInsertionSort.insert(x, lst,  cmp)._0 === (x :: lst).sortWith((cmp)))
+    val cmp = (a:Int, b:Int) => a < b
+    val lst = (1 to 500).map(_ => Random.nextInt(10000)).toList
+    assert(objInsertionSort.sort[Int](cmp)(lst)._1 === lst.sortWith(cmp))
   }
 
-  test("Caso 3 Enteros función insert listas tamaño 1000") {
+  test("Caso 3 Enteros comprobar ordenamiento listas tamaño 1000") {
     
-    val cmp = (a: Int, b: Int) => a < b
-    val lst = (1 to 1000).map(_ => Random.nextInt(10000)).toList.sortWith(cmp)
-    val x = Random.nextInt(10000)
-    assert(objInsertionSort.insert(x, lst,  cmp)._0 === (x :: lst).sortWith((cmp)))
+    val cmp = (a:Int, b:Int) => a < b
+    val lst = (1 to 1000).map(_ => Random.nextInt(10000)).toList
+    assert(objInsertionSort.sort[Int](cmp)(lst)._1 === lst.sortWith(cmp))
   }
+
+  test("Caso 4 con String 500 aleatorios de tamaño entre 40 y 80") {
+
+    val cmp = (a:String, b:String) => a.compareTo(b) == -1
+    val sizeString:Int = Random.nextInt(80)+40
+    val lst = (1 to 500).map(_ => (1 to sizeString).map(_ => Random.nextPrintableChar()).mkString).toList
+    assert(objInsertionSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))
+  }
+  
+
+  test("Caso 5 con String 1000 aleatorios de tamaño entre 40 y 80") {
+
+    val cmp = (a:String, b:String) => a.compareTo(b) == -1
+    val sizeString:Int = Random.nextInt(80)+40
+    val lst = (1 to 1000).map(_ => (1 to sizeString).map(_ => Random.nextPrintableChar()).mkString).toList
+    assert(objInsertionSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))
+  }
+
+  test("Caso 6 Verificar función insertar lista "){
+    val cmp = (a:Int, b:Int) => a > b
+    val lst = (1 to 800).map(_ => Random.nextInt(10000)).toList
+    val elm = Random.nextInt(10000)
+    assert(objInsertionSort.insert[Int](elm, lst, cmp)._1 === (elm :: lst).sortWith(cmp)) 
+  }
+  
+
+  test("Caso 6 Verificar función insertar lista "){
+    val cmp = (a:Int, b:Int) => a > b
+    val lst = (1 to 1600).map(_ => Random.nextInt(10000)).toList
+    val elm = Random.nextInt(10000)
+    assert(objInsertionSort.insert[Int](elm, lst, cmp)._1 === (elm :: lst).sortWith(cmp)) 
+  }
+
 }
