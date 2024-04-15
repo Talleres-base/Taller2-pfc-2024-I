@@ -11,7 +11,7 @@ import scala.util.Random
 @RunWith(classOf[JUnitRunner])
 class InsertionSortTest extends AnyFunSuite {
   val objInsertionSort = new InsertionSort()
-  
+  val letras = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u","v", "w", "x", "y", "z")
   test("Caso 1 Enteros comprobar ordenamiento listas tamaño 100") {
     val cmp = (a:Int, b:Int) => a < b
     val lst = (1 to 100).map(_ => Random.nextInt(10000)).toList
@@ -36,7 +36,7 @@ class InsertionSortTest extends AnyFunSuite {
 
     val cmp = (a:String, b:String) => a.compareTo(b) == -1
     val sizeString:Int = Random.nextInt(80)+40
-    val lst = (1 to 500).map(_ => (1 to sizeString).map(_ => Random.nextPrintableChar()).mkString).toList
+    val lst = (1 to 500).map(_ => (1 to sizeString).map(_ => letras(Random.nextInt(letras.size))).mkString).toList
     assert(objInsertionSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))
   }
   
@@ -45,13 +45,13 @@ class InsertionSortTest extends AnyFunSuite {
 
     val cmp = (a:String, b:String) => a.compareTo(b) == -1
     val sizeString:Int = Random.nextInt(80)+40
-    val lst = (1 to 1000).map(_ => (1 to sizeString).map(_ => Random.nextPrintableChar()).mkString).toList
+    val lst = (1 to 1000).map(_ => (1 to sizeString).map(_ => letras(Random.nextInt(letras.size))).mkString).toList
     assert(objInsertionSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))
   }
 
   test("Caso 6 Verificar función insertar lista 800"){
     val cmp = (a:Int, b:Int) => a > b
-    val lst = (1 to 800).map(_ => Random.nextInt(10000)).toList
+    val lst = (1 to 800).map(_ => Random.nextInt(10000)).toList.sortWith(cmp)
     val elm = Random.nextInt(10000)
     assert(objInsertionSort.insert[Int](elm, lst, cmp)._1 === (elm :: lst).sortWith(cmp)) 
   }
@@ -59,7 +59,7 @@ class InsertionSortTest extends AnyFunSuite {
 
   test("Caso 7 Verificar función insertar lista 1600 "){
     val cmp = (a:Int, b:Int) => a > b
-    val lst = (1 to 1600).map(_ => Random.nextInt(10000)).toList
+    val lst = (1 to 1600).map(_ => Random.nextInt(10000)).toList.sortWith(cmp)
     val elm = Random.nextInt(10000)
     assert(objInsertionSort.insert[Int](elm, lst, cmp)._1 === (elm :: lst).sortWith(cmp)) 
   }
