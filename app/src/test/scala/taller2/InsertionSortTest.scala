@@ -34,7 +34,7 @@ class InsertionSortTest extends AnyFunSuite {
 
   test("Caso 4 con String 500 aleatorios de tamaño entre 40 y 80") {
 
-    val cmp = (a:String, b:String) => a.compareTo(b) == -1
+    val cmp = (a:String, b:String) => a.compareTo(b) < 0
     val sizeString:Int = Random.nextInt(80)+40
     val lst = (1 to 500).map(_ => (1 to sizeString).map(_ => letras(Random.nextInt(letras.size))).mkString).toList
     assert(objInsertionSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))
@@ -43,7 +43,7 @@ class InsertionSortTest extends AnyFunSuite {
 
   test("Caso 5 con String 1000 aleatorios de tamaño entre 40 y 80") {
 
-    val cmp = (a:String, b:String) => a.compareTo(b) == -1
+    val cmp = (a:String, b:String) => a.compareTo(b) < 0
     val sizeString:Int = Random.nextInt(80)+40
     val lst = (1 to 1000).map(_ => (1 to sizeString).map(_ => letras(Random.nextInt(letras.size))).mkString).toList
     assert(objInsertionSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))

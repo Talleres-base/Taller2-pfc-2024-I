@@ -13,6 +13,8 @@ class QuickSortTest extends AnyFunSuite {
   
   val objQuickSort = new QuickSort()
   
+  val letras = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u","v", "w", "x", "y", "z")
+  
   test("Caso 1 Enteros función QuickSort listas tamaño 100") {
     val cmp = (a: Int, b: Int) => a < b
     val lst = (1 to 100).map(_ => Random.nextInt(10000)).toList
@@ -41,4 +43,23 @@ class QuickSortTest extends AnyFunSuite {
     val (menores, noMenores, _) = objQuickSort.menoresQue_noMenoresQue(lst, v, cmp)
     assert(menores.forall(cmp(_, v)) && noMenores.forall(!cmp(_, v)))
   }
+  
+  test("Caso 5 con String 500 aleatorios de tamaño entre 40 y 80") {
+
+    val cmp = (a:String, b:String) => a.compareTo(b) < 0
+    val sizeString:Int = Random.nextInt(80)+40
+    val lst = (1 to 500).map(_ => (1 to sizeString).map(_ => letras(Random.nextInt(letras.size))).mkString).toList
+    assert(objQuickSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))
+  }
+  
+
+  test("Caso 6 con String 1000 aleatorios de tamaño entre 40 y 80") {
+
+    val cmp = (a:String, b:String) => a.compareTo(b) < 0
+    val sizeString:Int = Random.nextInt(80)+40
+    val lst = (1 to 1000).map(_ => (1 to sizeString).map(_ => letras(Random.nextInt(letras.size))).mkString).toList
+    assert(objQuickSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))
+  }
+
+
 }
