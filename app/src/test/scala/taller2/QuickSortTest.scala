@@ -15,21 +15,30 @@ class QuickSortTest extends AnyFunSuite {
   
   test("Caso 1 Enteros función QuickSort listas tamaño 100") {
     val cmp = (a: Int, b: Int) => a < b
-    val lst = (1 to 100).map(_ => Random.nextInt(10000)).toList.sortWith(cmp)
+    val lst = (1 to 100).map(_ => Random.nextInt(10000)).toList
     assert(objQuickSort.sort[Int](cmp)(lst)._1 === lst.sortWith((cmp)))
   }
 
   test("Caso 2 Enteros función QuickSort listas tamaño 500") {
     
     val cmp = (a: Int, b: Int) => a < b
-    val lst = (1 to 500).map(_ => Random.nextInt(10000)).toList.sortWith(cmp)
+    val lst = (1 to 500).map(_ => Random.nextInt(10000)).toList
     assert(objQuickSort.sort[Int](cmp)(lst)._1 === lst.sortWith((cmp)))
   }
 
   test("Caso 3 Enteros función QuickSort listas tamaño 1000") {
     
     val cmp = (a: Int, b: Int) => a < b
-    val lst = (1 to 1000).map(_ => Random.nextInt(10000)).toList.sortWith(cmp)
+    val lst = (1 to 1000).map(_ => Random.nextInt(10000)).toList
     assert(objQuickSort.sort[Int](cmp)(lst)._1 === lst.sortWith((cmp)))
+  }
+
+  test("Caso 4 Verificar funciones menoresQue_noMenoresQue ") {
+    val cmp = (a: Int, b: Int) => a < b
+    val lst = (1 to 1000).map(_ => Random.nextInt(10000)).toList
+    val index = Random.nextInt(lst.length)
+    val v = lst(index)
+    val (menores, noMenores, _) = objQuickSort.menoresQue_noMenoresQue(lst, v, cmp)
+    assert(menores.forall(cmp(_, v)) && noMenores.forall(!cmp(_, v)))
   }
 }

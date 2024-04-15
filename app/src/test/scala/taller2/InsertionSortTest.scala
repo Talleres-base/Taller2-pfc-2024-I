@@ -49,7 +49,7 @@ class InsertionSortTest extends AnyFunSuite {
     assert(objInsertionSort.sort[String](cmp)(lst)._1 === lst.sortWith(cmp))
   }
 
-  test("Caso 6 Verificar función insertar lista "){
+  test("Caso 6 Verificar función insertar lista 800"){
     val cmp = (a:Int, b:Int) => a > b
     val lst = (1 to 800).map(_ => Random.nextInt(10000)).toList
     val elm = Random.nextInt(10000)
@@ -57,7 +57,7 @@ class InsertionSortTest extends AnyFunSuite {
   }
   
 
-  test("Caso 6 Verificar función insertar lista "){
+  test("Caso 7 Verificar función insertar lista 1600 "){
     val cmp = (a:Int, b:Int) => a > b
     val lst = (1 to 1600).map(_ => Random.nextInt(10000)).toList
     val elm = Random.nextInt(10000)
