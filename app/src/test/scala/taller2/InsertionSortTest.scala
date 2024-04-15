@@ -63,5 +63,4 @@ class InsertionSortTest extends AnyFunSuite {
     val elm = Random.nextInt(10000)
     assert(objInsertionSort.insert[Int](elm, lst, cmp)._1 === (elm :: lst).sortWith(cmp)) 
   }
-
 }
